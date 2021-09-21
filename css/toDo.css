@@ -20,11 +20,10 @@ body{
 main{
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
-
 form{
-    width: 300px;
+    width: 600px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -33,37 +32,8 @@ form{
     border-radius: 12px;
     box-shadow: 0 0 24px #0003;
 }
-
-input{
-    margin: 18px 0;
-    background-color: #eee;
-    border: none;
-    padding-left: 12px;
-}
-
-button, input{
-    height: 40px;
-    width: 100%;
-    border-radius: 12px;
-}
-
-button{
-    background-color: #73B3FD;
-    color: #FFF;
-    font-weight: bold;
-    margin-top: 18px;
-    cursor: pointer;    
-}
-
-input:focus,
-button:hover,
-button:focus{
-  transform: scale(1.05);
-  transition: 0.5s;
-  box-shadow: 0 0 8px #0006;
-}
-
-button:active{
-    box-shadow: none ;
-    transform: scale(1);
+.content-fomr{
+    display: flex;
+    align-items: center;
+    
 }
