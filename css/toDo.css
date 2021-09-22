@@ -24,6 +24,7 @@ main{
 }
 form{
     width: 600px;
+    max-width: 80%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -36,6 +37,7 @@ form{
 }
 .content-form{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
     justify-content: space-between;
@@ -57,8 +59,10 @@ form{
     flex-direction: column;
     justify-content: space-between; 
     align-self: stretch;
+    width: 240px;
+    max-width: 100%;
     
-   
+    
 }
 
 label {
@@ -68,22 +72,22 @@ label {
 .input-container{
     display: flex;
     flex-direction: column; 
+    width: 100%;
 }
 
 input{
     height:40px;
-    width: 240px;
+    width:100%;
 }
 
 input, textarea{
     background-color: #eee;
     border-radius: 12px;
     padding:12px;
-
+    
 }
 
 textarea {
-    margin-right: 15px;
     resize: none;
 }
 
@@ -98,4 +102,17 @@ button:focus{
 button:active{
     box-shadow: none ;
     transform: scale(1);
+}
+
+#card-container{
+    width: 600px;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 0 24px #0003;
+    margin-top: 40px;   
 }

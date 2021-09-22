@@ -10,9 +10,9 @@
 <body>
     <main>
         <form>
-            <h1>New ToDo</h1>
+            <h1>Novas Tarefas</h1>
            <div class="content-form">
-                <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Descrição"></textarea>
+                <textarea name="descricao" id="descricao" cols="30" rows="7" placeholder="Descrição"></textarea>
                 <div id="datas-container">
                     <div class= "input-container">
                         <label for="data-inicial">Data Inicial</label>
@@ -26,7 +26,11 @@
             </div>
             <button type="submit" id="salvar">SALVAR</button>
         </form>
+        <section id="card-container">
+            <p>Ainda não há tarefas</p>
+        </section>
     </main>
     <script src="../js/script.js"></script>
+    <script src="../js/apiConsumer.js"></script>
 </body>
 </html>
