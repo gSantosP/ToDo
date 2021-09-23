@@ -14,6 +14,7 @@ function validaUerName(userName) {
         return true;
 }
 
+// Contrutor para novos usuários
 function NewUser(userName,  pass){
     this.userName = userName;
     this.pass = pass;
