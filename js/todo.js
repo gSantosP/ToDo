@@ -23,6 +23,41 @@ function validaDataFinal() {
         return true;
 }
 
+function Task(id, dataIncio, dataTermino, descricao){
+    this.id = id;
+    this.dataInicio = dataIncio;
+    this.dataTermino = dataTermino;
+    this.descricao = descricao;
+}
+
+// Salva a nova tarefa no localstorage
+function saveTask(){
+
+    const dataInicio = document.getElementById("data-inicial").value;
+    const dataFinal = document.getElementById("data-final").value;
+    const desrcricao = document.getElementById("descricao").value;
+
+    let tasks = window.localStorage.getItem("tasks");
+
+    if(tasks == null || tasks == undefined || tasks == ''){
+        tasks = JSON.stringify([0, []]);
+        window.localStorage.setItem("users", tasks);
+    }
+
+    tasks = JSON.parse(tasks);
+
+    task = new Task(tasks[0], dataInicio, dataFinal, desrcricao);
+
+    task = JSON.stringify(task);
+
+    tasks[1].push(task);
+    tasks[0]++;
+    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    alert("Nova tarefa criada com sucesso!");
+
+}
+
 const botaoSalvar = document.getElementById("botaoSalvar");
 botaoSalvar.addEventListener('click', e => {
     e.preventDefault();
@@ -35,7 +70,10 @@ botaoSalvar.addEventListener('click', e => {
     } else if (!validaDescricao()) {
         alert("A descrição deve ser preenchida!")
         descricao.style.border = "2px solid red"
+    } else{
+        saveTask();
     }
+
 })
 
 const inputDataFinal = document.getElementById('data-final')

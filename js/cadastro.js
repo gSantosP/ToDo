@@ -25,10 +25,10 @@ function saveUser() {
 
     let users = window.localStorage.getItem("users");
     
-    if(users == null || users == '');
+    if(users == null || users == undefined || users == ''){
         users = JSON.stringify([]);
         window.localStorage.setItem("users", users);
-    
+    }
     
     const userName = document.getElementById("User").value;
     const pass = document.getElementById("Pass").value;
@@ -40,7 +40,7 @@ function saveUser() {
     if(!validaUserName(newUser.userName)){
         alert("O nome de usuário deve conter, no mínimo, 5 caracter!");
     }
-    else if(!validaPass(unewUserser.pass)){
+    else if(!validaPass(newUser.pass)){
         alert("A senha deve conter, no mínimo, 8 caracters!");
     }
     else if(newUser.pass != confimPass){
