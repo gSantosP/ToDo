@@ -19,7 +19,7 @@ function autentication() {
     if(isValid == false || isValid == undefined || isValid == null || isValid == ''){
         alert("Usuario inválido!");
     }else{
-        window.location.pathname = "/html/todo.html"
+        window.location.pathname = "./html/todo.html"
     }
 }
 
