@@ -1,4 +1,4 @@
-window.onload = render;
+window.onload = renderLoadAnimation;
 
 
 function autentication() {

@@ -5,7 +5,7 @@ window.onload = startApp;
 function startApp(){
     setDatas();
     renderTaskCards();
-    render();
+    renderLoadAnimation();
 }
 
 // Define as regras para as datas

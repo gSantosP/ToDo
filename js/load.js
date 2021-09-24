@@ -1,4 +1,4 @@
-function render(){
+function renderLoadAnimation(){
     
     var load = document.createElement("div")
     load.id = "load"

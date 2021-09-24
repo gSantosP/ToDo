@@ -1,5 +1,5 @@
 
-window.onload = render
+window.onload = renderLoadAnimation
 
 
 let dadosArray = [];

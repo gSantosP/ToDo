@@ -61,7 +61,7 @@ input:focus,
 button:hover,
 button:focus{
   transform: scale(1.05);
-  transition: 0.5s;
+  transition: 0.2s;
   box-shadow: 0 0 8px #0006;
 }
 
