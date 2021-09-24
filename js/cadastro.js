@@ -7,7 +7,7 @@ function validaPass(pass) {
 }
 
 // Valida o nome de usuário inserido
-function validaUerName(userName) {
+function validaUserName(userName) {
     if(userName.length < 5)
         return false;
     else
@@ -37,7 +37,7 @@ function saveUser() {
     const newUser = new NewUser(userName, pass);
     
     
-    if(!validaUerName(newUser.userName)){
+    if(!validaUserName(newUser.userName)){
         alert("O nome de usuário deve conter, no mínimo, 5 caracter!");
     }
     else if(!validaPass(unewUserser.pass)){
