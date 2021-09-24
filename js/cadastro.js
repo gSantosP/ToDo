@@ -47,8 +47,7 @@ function saveUser() {
         alert("As senhas inseridas não correspondem!");
     }
     else{
-        userJson = JSON.stringify(newUser);
-
+        
         users = JSON.parse(users);
         users.push(newUser);
         window.localStorage.setItem("users", JSON.stringify(users));

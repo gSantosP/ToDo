@@ -91,9 +91,10 @@ textarea {
     resize: none;
 }
 
-input:focus,
+input[type = "date"]:focus,
 button:hover,
-button:focus{
+button:focus,
+textarea:focus{
   transform: scale(1.05);
   transition: 0.5s;
   box-shadow: 0 0 8px #0006;
