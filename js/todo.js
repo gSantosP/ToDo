@@ -75,7 +75,7 @@ function saveTask(){
 
     task = new Task(tasks[0], dataInicio, dataFinal, desrcricao);
 
-    tasks[1].push(task);
+    tasks[1].unshift(task);
     tasks[0]++;
     window.localStorage.setItem("tasks", JSON.stringify(tasks));
 
@@ -96,7 +96,7 @@ function renderTaskCards(){
         cardsCountainer.appendChild(warning);
     }
     else {
-        
+        cardsCountainer.innerHTML = ""
         tasks[1].forEach( task => {
             
             checkbox = document.createElement('input');
@@ -107,27 +107,42 @@ function renderTaskCards(){
             descricao = document.createElement("p");
             descricao.innerHTML = task.descricao;
             
-            dataInicial = document.createElement("span");
-            dataInicial.innerHTML = task.dataInicio;
-            dataFinal = document.createElement("span");
-            dataFinal.innerHTML = task.dataInicio;
+            dataInicial = document.createElement("div");
+            dataInicial.innerHTML = `Data inicial: ${task.dataInicio}`;
+            dataFinal = document.createElement("div");
+            dataFinal.innerHTML = `Data inicial: ${task.dataInicio}`;
             
             datasCountainer = document.createElement("div");
             datasCountainer.classList = "datas-countainer"
             datasCountainer.appendChild(dataInicial);
             datasCountainer.appendChild(dataFinal);
             
+            contentCuntttaner = document.createElement("div");
+            contentCuntttaner.classList = "content-task";
+            contentCuntttaner.appendChild(descricao);
+            contentCuntttaner.appendChild(datasCountainer);
+            
+            lixeira = document.createElement('img');
+            lixeira.classList = "lixeira"
+            lixeira.src = "../assets/svg/lixeira.svg"
             
             taskCard = document.createElement("div");
             taskCard.classList = "task-card";
             taskCard.appendChild(checkbox);
             taskCard.appendChild(descricao);
             taskCard.appendChild(datasCountainer);
+            taskCard.appendChild(lixeira);
+            
             
             cardsCountainer.appendChild(taskCard);
             
         });
         
+
+        const taskCardsCountainer = document.getElementById("card-container");
+        document.querySelectorAll(".lixeira").forEach( l => {
+            l.onclick = () => taskCardsCountainer.removeChild(l.parentNode)
+        })
         
     }
     
@@ -154,6 +169,7 @@ botaoSalvar.addEventListener('click', e => {
         descricao.style.border = "2px solid red"
     } else{
         saveTask();
+        renderTaskCards();
     }
 
 })

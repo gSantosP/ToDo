@@ -14,7 +14,7 @@ function render(){
     
 
     var img = document.createElement("img")
-    img.setAttribute("src","../img/ouroboros.png")
+    img.setAttribute("src","../assets/img/ouroboros.png")
     img.style.backgroundSize = "cover"
     img.style.height = "100px"
     img.style.width  = "100px"
