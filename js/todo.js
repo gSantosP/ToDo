@@ -87,7 +87,6 @@ function renderTaskCards(){
     const cardsCountainer = document.getElementById("card-container");
     let tasks = window.localStorage.getItem("tasks");
     tasks = JSON.parse(tasks);
-    console.log(tasks)
     
     if(tasks == null || tasks == undefined || tasks == '' || tasks[1].length == 0){
         const warning = document.createElement("p");
