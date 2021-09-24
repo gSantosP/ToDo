@@ -65,6 +65,7 @@ button:focus{
 
 a#new-account{
     font-size: .8em;
+    color: #3b94fa;
 }
 
 button:active{
