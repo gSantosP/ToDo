@@ -1,41 +1,67 @@
-const promise = fetch('https://jsonplaceholder.typicode.com/todos/');
+let dadosArray = [];
+async function criarTasks() {
+    const promise = await fetch('https://jsonplaceholder.typicode.com/todos/')
+        .then((resposta) => resposta.json())
+        .then(dados => {
+            dados.forEach(element => {
+                dadosArray.push(element);
+            });
+        });
 
-promise.then((resposta) => {
-    resposta.json().then((dados) => {
-        dados.forEach(function(item){
-            console.log(item.title)
-            let sectionCards = document.querySelector('#card-container');
+    dadosArray.forEach(function (item) {
+        let sectionCards = document.querySelector('#card-container');
 
-            /* Criando a Div para gerar os cards */
-            let divTasks = document.createElement('div');
-            divTasks.setAttribute("class","card-task");
-            /* Criando os elementos que compoem a div:
-            * Status da tarefa
-            * Título da tarefa
-            * ID */
-            let statusTask = document.createElement('p');
-            let textStatus = document.createTextNode(item.completed);
-            statusTask.setAttribute("class","status-task");
-            statusTask.appendChild(textStatus);
+        /* Criando a Div para gerar os cards */
+        let divTasks = document.createElement('div');
+        divTasks.setAttribute("class", "card-task");
+        /* Criando os elementos que compoem a div:
+        * Status da tarefa
+        * Título da tarefa
+        * ID */
 
-            let titleTask = document.createElement('h2');
-            let textTitle = document.createTextNode(item.title);
-            titleTask.setAttribute("class","title-task");
-            titleTask.appendChild(textTitle);
-
-            let idTask = document.createElement('p');
-            let textId = document.createTextNode(item.id);
-            idTask.setAttribute("class","id-task");
-            idTask.appendChild(textId);
-
-            divTasks.appendChild(statusTask);
-            divTasks.appendChild(titleTask);
-            divTasks.appendChild(idTask);
+        /* Pro staus vamos utilizar um radio button */
+        let statusTaskRadio = document.createElement('input');
+        statusTaskRadio.setAttribute("type", "checkbox");
+        statusTaskRadio.classList = "status-task";
+        statusTaskRadio.checked = item.completed;
 
 
-            sectionCards.appendChild(divTasks);
-        })
+        let titleTask = document.createElement('p');
+        let textTitle = document.createTextNode(item.title);
+        titleTask.setAttribute("class", "title-task");
+        if (item.completed) {
+            titleTask.style.textDecoration = "line-through";
+            titleTask.style.color = "#0006";
+        } else {
+            titleTask.style.fontWeight = "600";
+        }
+
+        titleTask.appendChild(textTitle);
+
+        let idTask = document.createElement('p');
+        let textId = document.createTextNode(item.id);
+        idTask.setAttribute("class", "id-task");
+        idTask.appendChild(textId);
+
+
+        divTasks.appendChild(statusTaskRadio);
+        divTasks.appendChild(titleTask);
+        divTasks.appendChild(idTask);
+
+
+        sectionCards.appendChild(divTasks);
+
+        statusTaskRadio.onclick = () => {
+            if (statusTaskRadio.checked) {
+                titleTask.style.textDecoration = "line-through";
+                titleTask.style.color = "#0006";
+            } else {
+                titleTask.style.textDecoration = "none";
+                titleTask.style.color = "#000";
+                titleTask.style.fontWeight = "600";
+            }
+        }
     })
-}).catch((erro) => {
-    console.log("Ocorreu um erro: ",erro);
-})
+}
+
+criarTasks();

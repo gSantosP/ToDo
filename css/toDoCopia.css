@@ -57,9 +57,10 @@ main{
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
+    padding: 12px;
 }
 
-div{
+div {
     max-width: 100%;
     display: flex;
     align-items: center;
@@ -72,16 +73,19 @@ div{
 }
 
 .status-task {
-    width: 15%;
+    min-width: 32px;
+    min-height: 32px;
+    border: 2px solid #73B3FD;
 }
 
 .title-task {
-    width: 70%;
-
+    flex-grow: 1;
+    margin: 0 14px;
+    font-size: 1.2em;
 }
 
 .id-task {
-    width: 15%;
+    width: 10%;
 
 }
 
