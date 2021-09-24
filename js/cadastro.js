@@ -1,3 +1,5 @@
+window.onload = render
+
 // Valida a senha inserida
 function validaPass(pass) {
     if(pass == null || pass.length < 8)

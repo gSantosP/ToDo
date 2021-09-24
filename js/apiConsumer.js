@@ -1,3 +1,7 @@
+
+window.onload = render
+
+
 let dadosArray = [];
 async function criarTasks() {
     const promise = await fetch('https://jsonplaceholder.typicode.com/todos/')

@@ -1,9 +1,11 @@
 window.onload = startApp;
 
+
 // Inicia a aplicalção
 function startApp(){
     setDatas();
     renderTaskCards();
+    render();
 }
 
 // Define as regras para as datas
