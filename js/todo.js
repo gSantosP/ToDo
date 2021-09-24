@@ -1,3 +1,4 @@
+// Validação do campo descrição
 function validaDescricao() {
     const text = document.getElementById("descricao").value
     if(text == null || text == undefined ||text.length < 10)
@@ -6,6 +7,7 @@ function validaDescricao() {
         return true;
 }
 
+// Validação do campo data final
 function validaDataFinal() {
     let data = new Date().toLocaleString('pt-br', {timeZone: 'America/Sao_Paulo'}).split(' ')[0].split('/')
     data = data.reverse()
@@ -19,11 +21,6 @@ function validaDataFinal() {
             return false
     }
         return true;
-}
-
-function toggleBorder() {
-    const dtfinal = document.getElementById('data-final').style.border = "none"
-    const descricao = document.getElementById("descricao").style.border = "none"
 }
 
 const botaoSalvar = document.getElementById("botaoSalvar");
