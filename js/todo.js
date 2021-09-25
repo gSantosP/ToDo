@@ -145,7 +145,7 @@ function renderTaskCards(){
             dataInicial.innerHTML = `Data inicial: ${task.dataInicio}`;
             dataInicial.classList = "data"
             dataFinal = document.createElement("div");
-            dataFinal.innerHTML = `Data inicial: ${task.dataInicio}`;
+            dataFinal.innerHTML = `Termino: ${task.dataInicio}`;
             dataFinal.classList = "data"
             
             const datasCountainer = document.createElement("div");
