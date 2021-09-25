@@ -175,9 +175,10 @@ botaoSalvar.addEventListener('click', e => {
 
     if(!validaDataFinal()){
         dtfinal.style.border = "2px solid red"
-        alert("A data deve ser maior ou igual a hoje!")
+       // alert("A data deve ser maior ou igual a hoje!")
+        alert("A data final não pode ser anterior a data de hoje!")
     } else if (!validaDescricao()) {
-        alert("A descrição deve ser deve conter mais de 10 caracters!")
+        alert("A descrição deve conter mais de 10 caracteres!")
         descricao.style.border = "2px solid red"
     } else{
         saveTask();
