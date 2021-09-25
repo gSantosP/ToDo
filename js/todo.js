@@ -3,9 +3,18 @@ window.onload = startApp;
 
 // Inicia a aplicalção
 function startApp(){
-    setDatas();
-    renderTaskCards();
     renderLoadAnimation();
+    setDatas();
+    checkUser()
+    renderTaskCards();
+}
+
+function checkUser(){
+    const user = window.sessionStorage.getItem("user");
+
+    if(user == null || user == undefined || user == ""){
+        window.location.href = window.location.origin
+    }
 }
 
 // Define as regras para as datas
@@ -49,8 +58,7 @@ function validaDataFinal() {
 }
 
 // Classe para instanciação de objetos 'tarefas'
-function Task(id, dataIncio, dataTermino, descricao){
-    this.id = id;
+function Task(dataIncio, dataTermino, descricao){
     this.dataInicio = dataIncio;
     this.dataTermino = dataTermino;
     this.descricao = descricao;
@@ -64,33 +72,37 @@ function saveTask(){
     const dataFinal = document.getElementById("data-final").value;
     const desrcricao = document.getElementById("descricao").value;
 
-    let tasks = window.localStorage.getItem("tasks");
+    const user = window.sessionStorage.getItem("user");
+    let tasks = window.localStorage.getItem(`tasks-${user}`);
 
-    if(tasks == null || tasks == undefined || tasks == '' || tasks[1].length == 0){
-        tasks = JSON.stringify([0, []]);
-        window.localStorage.setItem("tasks", tasks);
+    if(tasks == null || tasks == undefined || tasks == '' || tasks.length == 0){
+        tasks = JSON.stringify([]);
+        window.localStorage.setItem(`tasks-${user}` , tasks);
     }
 
     tasks = JSON.parse(tasks);
 
-    task = new Task(tasks[0], dataInicio, dataFinal, desrcricao);
+    task = new Task(dataInicio, dataFinal, desrcricao);
 
-    tasks[1].unshift(task);
-    tasks[0]++;
-    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    tasks.unshift(task);
+    window.localStorage.setItem(`tasks-${user}`, JSON.stringify(tasks));
 
     alert("Nova tarefa criada com sucesso!");
 
 }
 
+
 // Renderiza os cards com as tarefas
 function renderTaskCards(){
+
+    const user = window.sessionStorage.getItem("user");
     
     const cardsCountainer = document.getElementById("card-container");
-    let tasks = window.localStorage.getItem("tasks");
+    let tasks = window.localStorage.getItem(`tasks-${user}`);
     tasks = JSON.parse(tasks);
     
-    if(tasks == null || tasks == undefined || tasks == '' || tasks[1].length == 0){
+    if(tasks == null || tasks == undefined || tasks == '' || tasks.length == 0){
+        cardsCountainer.innerHTML = "";
         const warning = document.createElement("p");
         warning.innerHTML = "Ainda não há tarefas";
         cardsCountainer.appendChild(warning);
@@ -102,13 +114,22 @@ function renderTaskCards(){
         const clearButton = document.createElement("button");
         clearButton.innerHTML = "LIMPAR TAREFAS";
         clearButton.id = 'clear-button';
+
+        // Limpa a lista de tarefas do usuário logado
+        clearButton.onclick = () => {
+            window.localStorage.removeItem(`tasks-${user}`);
+            renderTaskCards();
+        };
+
+
         cardsCountainer.appendChild(clearButton);
-        tasks[1].forEach( task => {
+        tasks.forEach( (task, index) => {
 
 
             // Card de tarefas
             const taskCard = document.createElement("div");
             taskCard.classList = "task-card";
+            taskCard.id = index;
             cardsCountainer.appendChild(taskCard);
             
             const checkbox = document.createElement('input');
@@ -151,15 +172,29 @@ function renderTaskCards(){
         });
         
 
+        // Remove uma tarefa ao clicar na lixeira
         const taskCardsCountainer = document.getElementById("card-container");
-        document.querySelectorAll(".lixeira").forEach( l => {
-            l.onclick = () => taskCardsCountainer.removeChild(l.parentNode)
+        document.querySelectorAll(".lixeira").forEach( lixeira => {
+            lixeira.onclick = () => {
+                const user = window.sessionStorage.getItem("user");
+                let task = lixeira.parentNode;
+                const id = task.id;
+                let tasks = window.localStorage.getItem(`tasks-${user}`);
+
+                tasks = JSON.parse(tasks);
+                tasks.splice(id, 1);
+                tasks = JSON.stringify(tasks);
+                window.localStorage.setItem(`tasks-${user}`, tasks);
+
+                renderTaskCards();
+            }
         })
         
     }
     
     
 }
+
 
 const inputDataFinal = document.getElementById('data-final');
 inputDataFinal.addEventListener('keypress', e => inputDataFinal.style.border = "none");
