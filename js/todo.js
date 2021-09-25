@@ -96,45 +96,57 @@ function renderTaskCards(){
         cardsCountainer.appendChild(warning);
     }
     else {
+
         cardsCountainer.innerHTML = ""
+        
+        const clearButton = document.createElement("button");
+        clearButton.innerHTML = "LIMPAR TAREFAS";
+        clearButton.id = 'clear-button';
+        cardsCountainer.appendChild(clearButton);
         tasks[1].forEach( task => {
+
+
+            // Card de tarefas
+            const taskCard = document.createElement("div");
+            taskCard.classList = "task-card";
+            cardsCountainer.appendChild(taskCard);
             
-            checkbox = document.createElement('input');
+            const checkbox = document.createElement('input');
             checkbox.type = "checkbox";
             checkbox.checked = task.checked;
             
             
-            descricao = document.createElement("p");
+            const descricao = document.createElement("p");
+            descricao.classList = "task-description"
             descricao.innerHTML = task.descricao;
             
-            dataInicial = document.createElement("div");
+            const dataInicial = document.createElement("div");
             dataInicial.innerHTML = `Data inicial: ${task.dataInicio}`;
+            dataInicial.classList = "data"
             dataFinal = document.createElement("div");
             dataFinal.innerHTML = `Data inicial: ${task.dataInicio}`;
+            dataFinal.classList = "data"
             
-            datasCountainer = document.createElement("div");
+            const datasCountainer = document.createElement("div");
             datasCountainer.classList = "datas-countainer"
             datasCountainer.appendChild(dataInicial);
             datasCountainer.appendChild(dataFinal);
             
-            contentCuntttaner = document.createElement("div");
+            const contentCuntttaner = document.createElement("div");
             contentCuntttaner.classList = "content-task";
             contentCuntttaner.appendChild(descricao);
             contentCuntttaner.appendChild(datasCountainer);
             
-            lixeira = document.createElement('img');
+            const lixeira = document.createElement('img');
             lixeira.classList = "lixeira"
             lixeira.src = "../assets/svg/lixeira.svg"
             
-            taskCard = document.createElement("div");
-            taskCard.classList = "task-card";
+
             taskCard.appendChild(checkbox);
-            taskCard.appendChild(descricao);
-            taskCard.appendChild(datasCountainer);
+            taskCard.appendChild(contentCuntttaner);
             taskCard.appendChild(lixeira);
             
             
-            cardsCountainer.appendChild(taskCard);
             
         });
         
