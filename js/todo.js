@@ -98,7 +98,7 @@ function renderTaskCards(){
     else {
 
         cardsCountainer.innerHTML = ""
-        
+
         const clearButton = document.createElement("button");
         clearButton.innerHTML = "LIMPAR TAREFAS";
         clearButton.id = 'clear-button';
@@ -177,7 +177,7 @@ botaoSalvar.addEventListener('click', e => {
         dtfinal.style.border = "2px solid red"
         alert("A data deve ser maior ou igual a hoje!")
     } else if (!validaDescricao()) {
-        alert("A descrição deve ser preenchida!")
+        alert("A descrição deve ser deve conter mais de 10 caracters!")
         descricao.style.border = "2px solid red"
     } else{
         saveTask();
