@@ -20,8 +20,14 @@ function renderLoadAnimation(){
     img.style.width  = "100px"
     img.style.transform = "rotate(360deg)"
     img.style.animation = "rotate 2.5s infinite linear"
-    img.style.animation = "spin .9s infinite linear"
+    img.style.animation = "spin 1s infinite linear"
     load.appendChild(img)
+
+    // darck
+    if(window.sessionStorage.getItem("theme") == "dark"){
+        img.style.backgroundImage = `url("../assets/img/ouroboros-white.png")`;
+        load.style.backgroundColor = "#333";
+    }
 
 
     document.body.appendChild(load)
@@ -29,7 +35,7 @@ function renderLoadAnimation(){
     setTimeout(_=>{
 
         document.body.removeChild(load)
-    }, 1500)
+    }, 1800)
 
 
 
