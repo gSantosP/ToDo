@@ -13,7 +13,7 @@ function checkUser(){
     const user = window.sessionStorage.getItem("user");
 
     if(user == null || user == undefined || user == ""){
-        window.location.href = window.location.origin
+        window.location.pathname = "/ToDo/"
     }
 }
 

@@ -56,7 +56,7 @@ function saveUser() {
 
         alert("Usuário criado com sucesso!");
 
-        document.location.pathname = "/index.html";
+        window.location.pathname = "/ToDo/";
     }
     
 }

@@ -13,13 +13,13 @@ function renderLoadAnimation(){
     load.style.justifyContent = "center"
     
 
-    var img = document.createElement("img")
-    img.setAttribute("src","../assets/img/ouroboros.png")
+    var img = document.createElement("div")
+    img.id = "dragao-spin"
     img.style.backgroundSize = "cover"
     img.style.height = "100px"
     img.style.width  = "100px"
-    // img.style.transform = "rotate(360deg)"
-    // img.style.animation = "rotate 2.5s infinite linear"
+    img.style.transform = "rotate(360deg)"
+    img.style.animation = "rotate 2.5s infinite linear"
     img.style.animation = "spin .9s infinite linear"
     load.appendChild(img)
 

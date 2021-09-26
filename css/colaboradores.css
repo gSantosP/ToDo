@@ -8,6 +8,11 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+#dragao-spin{
+    background-image: url("../assets/img/ouroboros.png");
+}
+
+
 body{
     position: relative;
 }
