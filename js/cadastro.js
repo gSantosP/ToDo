@@ -1,6 +1,8 @@
 window.onload = () => {
     renderLoadAnimation();
     setTheme()
+
+    document.getElementById("User").focus();
 }
 
 // Valida a senha inserida
