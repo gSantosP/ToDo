@@ -25,7 +25,7 @@ function renderLoadAnimation(){
 
     // darck
     if(window.sessionStorage.getItem("theme") == "dark"){
-        img.style.backgroundImage = `url("../assets/img/ouroboros-white.png")`;
+        img.style.backgroundImage = `url("ToDo/assets/img/ouroboros-white.png")`;
         load.style.backgroundColor = "#333";
     }
 
