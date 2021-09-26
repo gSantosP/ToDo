@@ -58,7 +58,7 @@ function darkTheme(sinal){
 
 }
 
-function lightTheme(){
+function lightTheme(sinal){
 
     window.sessionStorage.setItem('theme', 'light')
 
