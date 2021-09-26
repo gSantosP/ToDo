@@ -1,4 +1,4 @@
-function renderLoadAnimation(){
+function renderLoadAnimation(sinal){
     
     var load = document.createElement("div")
     load.id = "load"
@@ -25,8 +25,12 @@ function renderLoadAnimation(){
 
     // darck
     if(window.sessionStorage.getItem("theme") == "dark"){
-        img.style.backgroundImage = `url("ToDo/assets/img/ouroboros-white.png")`;
         load.style.backgroundColor = "#333";
+        img.style.backgroundImage = `url("../assets/img/ouroboros-white.png")`;
+        if(sinal){
+            img.style.backgroundImage = `url("./assets/img/ouroboros-white.png")`;
+        }
+        
     }
 
 

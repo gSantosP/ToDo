@@ -1,5 +1,5 @@
 window.onload = () => {
-    renderLoadAnimation();
+    renderLoadAnimation(true);
     setTheme(true);
     
     document.getElementById('User').focus();
