@@ -23,7 +23,7 @@ function autentication() {
         alert("Usuario inválido!");
     }else{
         window.sessionStorage.setItem("user", userName);
-        window.location.pathname = "/ToDo/html/todo.html" // é gambiarra, se alguém souber setar pra ele pegar o ToDo da URL e redirecionar
+        window.location.pathname = "/ToDo/html/todo.html";
     }
 }
 
