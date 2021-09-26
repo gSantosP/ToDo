@@ -90,6 +90,7 @@ button, input{
 }
 
 #submit-button{
+    color: #FFF;
     color: inherit;
     background-color: #73B3FD;
     font-weight: bold;

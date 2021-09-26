@@ -4,7 +4,8 @@ function setTheme(){
     } else if(window.sessionStorage.getItem('theme') == 'light'){
         lightTheme();
     } else {
-        window.sessionStorage.getItem('theme') == 'light';
+        window.sessionStorage.setItem('theme', 'light');
+        setTheme();
     }
 }
 
@@ -90,7 +91,7 @@ function lightTheme(){
 
     const submitB = document.getElementById("submit-button")
     if(submitB != null){
-        submitB.style.color = "#73B3FD";
+        submitB.style.color = "#FFF";
     }
 
     const themeButton = document.getElementById("theme-simbol");
