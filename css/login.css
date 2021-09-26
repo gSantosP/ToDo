@@ -14,14 +14,49 @@
     background-image: url("../assets/img/ouroboros.png");
 }
 
-
 html, body, main{
     height: 100%;
     width: 100%;
 }
 body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #eee;
     position: relative;
+}
+
+header{
+    margin-top: 24px;
+    width: 580px;
+    max-width: 74%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+
+#theme-button{
+    position: relative;
+    width: 56px;
+    height: 30px;
+    border-radius: 24px;
+    background-color: #73b3fd8c;
+}
+
+#theme-simbol{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    box-shadow: 0 0 8px #0006;
+    width: 30px;
+    height: 30px;
+    background-color: #EEE;
+    transform: scale(1.2);
+    background-image: url('../assets/svg/sun-icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 main{
@@ -54,12 +89,12 @@ button, input{
     border-radius: 12px;
 }
 
-button{
+#submit-button{
+    color: inherit;
     background-color: #73B3FD;
-    color: #FFF;
     font-weight: bold;
     margin-top: 18px;
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 input:focus,

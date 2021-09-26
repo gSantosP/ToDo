@@ -5,8 +5,14 @@ window.onload = startApp;
 function startApp(){
     renderLoadAnimation();
     setDatas();
-    checkUser()
+    checkUser();
     renderTaskCards();
+    setTheme()
+}
+
+// logout
+function exit(){
+    window.sessionStorage.removeItem('user');
 }
 
 function checkUser(){
@@ -128,7 +134,7 @@ function renderTaskCards(){
 
             // Card de tarefas
             const taskCard = document.createElement("div");
-            taskCard.classList = "task-card";
+            taskCard.classList = "task-card tipografy";
             taskCard.id = index;
             cardsCountainer.appendChild(taskCard);
             
@@ -143,18 +149,18 @@ function renderTaskCards(){
             
             const dataInicial = document.createElement("div");
             dataInicial.innerHTML = `Data inicial: ${task.dataInicio}`;
-            dataInicial.classList = "data"
+            dataInicial.classList = "data tipografy"
             dataFinal = document.createElement("div");
             dataFinal.innerHTML = `Termino: ${task.dataInicio}`;
-            dataFinal.classList = "data"
+            dataFinal.classList = "data tipografy"
             
             const datasCountainer = document.createElement("div");
-            datasCountainer.classList = "datas-countainer"
+            datasCountainer.classList = "datas-countainer tipografy"
             datasCountainer.appendChild(dataInicial);
             datasCountainer.appendChild(dataFinal);
             
             const contentCuntttaner = document.createElement("div");
-            contentCuntttaner.classList = "content-task";
+            contentCuntttaner.classList = "content-task tipografy";
             contentCuntttaner.appendChild(descricao);
             contentCuntttaner.appendChild(datasCountainer);
             
@@ -195,6 +201,19 @@ function renderTaskCards(){
     
 }
 
+ const themeButton = document.getElementById("theme-button");
+ themeButton.onclick = () => {
+     if(window.sessionStorage.getItem('theme') == 'dark'){
+        window.sessionStorage.setItem('theme', 'light')
+     } else if(window.sessionStorage.getItem('theme') == 'light'){
+        window.sessionStorage.setItem('theme', 'dark')
+    }
+
+    setTheme();
+ }
+
+const exitLink = document.getElementById("exit");
+exitLink.onclick = exit;
 
 const inputDataFinal = document.getElementById('data-final');
 inputDataFinal.addEventListener('keypress', e => inputDataFinal.style.border = "none");
@@ -202,7 +221,7 @@ inputDataFinal.addEventListener('keypress', e => inputDataFinal.style.border = "
 const inputDescricao = document.getElementById("descricao");
 inputDescricao.addEventListener('keypress', e => inputDescricao.style.border = "none");
 
-const botaoSalvar = document.getElementById("botaoSalvar");
+const botaoSalvar = document.getElementById("submit-button");
 botaoSalvar.addEventListener('click', e => {
     e.preventDefault();
     const dtfinal = document.getElementById('data-final')

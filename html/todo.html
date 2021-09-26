@@ -11,30 +11,37 @@
     <title>To-do App</title>
 </head>
 <body>
+    <header>
+        <a class="tipografy" id="exit" href="">SAIR</a>
+        <div id="theme-button">
+            <div class="sec-bkg" id="theme-simbol"></div>
+        </div>
+    </header>
     <main>
-        <form>
-            <h1>Novas Tarefas</h1>
+        <form class="primary-bkg">
+            <h1 class="tipografy">Novas Tarefas</h1>
            <div class="content-form">
-                <textarea name="descricao" id="descricao" cols="30" rows="7" placeholder="Descrição"></textarea>
+                <textarea class="sec-bkg tipografy name="descricao" id="descricao" cols="30" rows="7" placeholder="Descrição"></textarea>
                 <div id="datas-container">
                     <div class= "input-container">
-                        <label for="data-inicial">Data Inicial</label>
-                        <input type="date" name="data-inicial" id="data-inicial">
+                        <label for="data-inicial" class="tipografy">Data Inicial</label>
+                        <input class="sec-bkg tipografy" type="date" name="data-inicial" id="data-inicial">
                     </div>
                     <div class= "input-container">
-                        <label for="data-final">Data Final</label>
-                        <input type="date" name="data-final" id="data-final">
+                        <label for="data-final" class="tipografy tipografy">Data Final</label>
+                        <input class="sec-bkg tipografy" type="date" name="data-final" id="data-final">
                     </div>
                 </div>
             </div>
-            <button type="submit" id="botaoSalvar">SALVAR</button>
+            <button class="submit-button" type="submit" id="submit-button">SALVAR</button>
         </form>
-        <section id="card-container">
+        <section class="primary-bkg" id="card-container">
             
         </section>
 
-        <footer><footer><a id="colaboradores" href="./colaboradores.html">Colabroradores</a></footer></footer>
+        <footer><footer><a id="colaboradores" class="tipografy" href="./colaboradores.html">Colabroradores</a></footer></footer>
     </main>
+    <script src="../js/themes.js"></script>
     <script src="../js/todo.js"></script>
     <script src="../js/load.js"></script>
 </body>
