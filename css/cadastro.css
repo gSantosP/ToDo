@@ -78,9 +78,9 @@ form{
 }
 
 input{
+    border: 1px solid #73B3FD90;
     margin: 18px 0;
     background-color: #eee;
-    border: none;
     padding-left: 12px;
 }
 

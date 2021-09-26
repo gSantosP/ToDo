@@ -18,8 +18,6 @@ function autentication() {
     isValid = users.find(e => {
         return e.userName === userName && e.pass === pass;
     })
-
-    console.log(isValid)
     
     if(isValid == false || isValid == undefined || isValid == null || isValid == ''){
         alert("Usuario inválido!");

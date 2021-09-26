@@ -117,6 +117,7 @@ input{
 }
 
 input, textarea{
+    border: 1px solid #73B3FD90;
     background-color: #eee;
     border-radius: 12px;
     padding:12px;

@@ -231,10 +231,10 @@ const exitLink = document.getElementById("exit");
 exitLink.onclick = exit;
 
 const inputDataFinal = document.getElementById('data-final');
-inputDataFinal.addEventListener('keypress', e => inputDataFinal.style.border = "none");
+inputDataFinal.addEventListener('keypress', e => inputDataFinal.style.border = "1px solid #73B3FD90");
 
 const inputDescricao = document.getElementById("descricao");
-inputDescricao.addEventListener('keypress', e => inputDescricao.style.border = "none");
+inputDescricao.addEventListener('keypress', e => inputDescricao.style.border = "1px solid #73B3FD90");
 
 const botaoSalvar = document.getElementById("submit-button");
 botaoSalvar.addEventListener('click', e => {

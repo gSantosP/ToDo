@@ -97,5 +97,5 @@ const themeButton = document.getElementById("theme-button");
 
  const inputs = document.querySelectorAll("input");
 inputs.forEach( input => {
-    input.addEventListener("keydown", ev => input.style.border = "none")
+    input.addEventListener("keydown", ev => input.style.border = "1px solid #73B3FD90")
 })
