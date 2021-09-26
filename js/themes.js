@@ -1,9 +1,10 @@
 function setTheme(){
     if(window.sessionStorage.getItem('theme') == 'dark'){
         darkTheme();
-    }
-    if(window.sessionStorage.getItem('theme') == 'light'){
+    } else if(window.sessionStorage.getItem('theme') == 'light'){
         lightTheme();
+    } else {
+        window.sessionStorage.getItem('theme') == 'light';
     }
 }
 
