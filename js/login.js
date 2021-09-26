@@ -42,5 +42,5 @@ const themeButton = document.getElementById("theme-button");
         window.sessionStorage.setItem('theme', 'dark')
     }
 
-    setTheme();
+    setTheme(true);
  }

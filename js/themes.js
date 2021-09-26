@@ -1,15 +1,15 @@
-function setTheme(){
+function setTheme(s){
     if(window.sessionStorage.getItem('theme') == 'dark'){
-        darkTheme();
+        darkTheme(s);
     } else if(window.sessionStorage.getItem('theme') == 'light'){
-        lightTheme();
+        lightTheme(s);
     } else {
         window.sessionStorage.setItem('theme', 'light');
         setTheme();
     }
 }
 
-function darkTheme(){
+function darkTheme(sinal){
 
     window.sessionStorage.setItem('theme', 'dark')
 
@@ -51,7 +51,9 @@ function darkTheme(){
         themeButton.style.marginRight = 0;
         themeButton.style.marginLeft = "auto";
         themeButton.style.backgroundImage = "url('../assets/svg/moon-icon.svg')";
-
+        if(sinal){
+            themeButton.style.backgroundImage = "url('./assets/svg/moon-icon.svg')";
+        }
     }
 
 }
@@ -99,6 +101,9 @@ function lightTheme(){
         themeButton.style.marginLeft = "0";
         themeButton.style.marginRight = "auto";
         themeButton.style.backgroundImage = "url('../assets/svg/sun-icon.svg')"
+        if(sinal){
+            themeButton.style.backgroundImage = "url('./assets/svg/sun-icon.svg')";
+        }
     }
 
 }
