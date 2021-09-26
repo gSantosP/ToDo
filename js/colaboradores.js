@@ -12,6 +12,14 @@ function checkUser(){
     }
 }
 
+// logout
+function exit(){
+    window.sessionStorage.removeItem('user');
+}
+
+const exitLink = document.getElementById("exit");
+exitLink.onclick = exit;
+
 const themeButton = document.getElementById("theme-button");
  themeButton.onclick = () => {
      if(window.sessionStorage.getItem('theme') == 'dark'){
