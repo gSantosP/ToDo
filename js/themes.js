@@ -5,7 +5,7 @@ function setTheme(s){
         lightTheme(s);
     } else {
         window.sessionStorage.setItem('theme', 'light');
-        setTheme();
+        setTheme(s);
     }
 }
 
@@ -100,7 +100,7 @@ function lightTheme(){
     if(themeButton!= null){
         themeButton.style.marginLeft = "0";
         themeButton.style.marginRight = "auto";
-        themeButton.style.backgroundImage = "url('../assets/svg/sun-icon.svg')"
+        themeButton.style.backgroundImage = "url('../assets/svg/sun-icon.svg')";
         if(sinal){
             themeButton.style.backgroundImage = "url('./assets/svg/sun-icon.svg')";
         }
