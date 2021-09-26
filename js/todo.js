@@ -195,6 +195,21 @@ function renderTaskCards(){
                 renderTaskCards();
             }
         })
+
+        const checkList = document.querySelectorAll('input[type = "checkbox"]');
+        checkList.forEach( checkbox => {
+            checkbox.onclick = () =>{
+                const user = window.sessionStorage.getItem("user");
+                let task = checkbox.parentNode;
+                const id = task.id;
+                let tasks = window.localStorage.getItem(`tasks-${user}`);
+
+                tasks = JSON.parse(tasks);
+                tasks[id].checked = checkbox.checked;
+                tasks = JSON.stringify(tasks);
+                window.localStorage.setItem(`tasks-${user}`, tasks)
+            }
+        })
         
     }
     
