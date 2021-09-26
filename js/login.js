@@ -1,6 +1,6 @@
 window.onload = () => {
     renderLoadAnimation();
-    setTheme();
+    setTheme(true);
 }
 
 
