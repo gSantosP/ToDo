@@ -37,25 +37,35 @@ function saveUser() {
         window.localStorage.setItem("users", users);
     }
     
+    users = JSON.parse(users);
     const userName = document.getElementById("User").value;
     const pass = document.getElementById("Pass").value;
     const confimPass = document.getElementById("rep-pass").value;
     
     const newUser = new NewUser(userName, pass);
+
+
+    let notDisponible = false;
+    users.forEach(u => {
+        if(u.userName === userName) notDisponible = true;
+    })
     
-    
-    if(!validaUserName(newUser.userName)){
+    if(notDisponible){
+        alert("Este nome de usuário não está disponivel!")
+    }else if(!validaUserName(newUser.userName)){
         alert("O nome de usuário deve conter, no mínimo, 5 caracter!");
+        document.getElementById("User").style.border = "1px solid #db1414e6";
     }
     else if(!validaPass(newUser.pass)){
         alert("A senha deve conter, no mínimo, 8 caracters!");
+        document.getElementById("Pass").style.border = "1px solid #db1414e6";
     }
     else if(newUser.pass != confimPass){
         alert("As senhas inseridas não correspondem!");
+        document.getElementById("rep-pass").style.border = "1px solid #db1414e6";
     }
     else{
         
-        users = JSON.parse(users);
         users.push(newUser);
         window.localStorage.setItem("users", JSON.stringify(users));
 
@@ -84,3 +94,8 @@ const themeButton = document.getElementById("theme-button");
 
     setTheme();
  }
+
+ const inputs = document.querySelectorAll("input");
+inputs.forEach( input => {
+    input.addEventListener("keydown", ev => input.style.border = "none")
+})

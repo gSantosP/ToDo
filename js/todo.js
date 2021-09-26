@@ -243,12 +243,11 @@ botaoSalvar.addEventListener('click', e => {
     const descricao = document.getElementById("descricao")
 
     if(!validaDataFinal()){
-        dtfinal.style.border = "2px solid red"
-       // alert("A data deve ser maior ou igual a hoje!")
+        dtfinal.style.border = "1px solid #db1414e6"
         alert("A data final não pode ser anterior a data de hoje!")
     } else if (!validaDescricao()) {
         alert("A descrição deve conter mais de 10 caracteres!")
-        descricao.style.border = "2px solid red"
+        descricao.style.border = "1px solid #db1414e6"
     } else{
         saveTask();
         renderTaskCards();
