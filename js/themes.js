@@ -102,7 +102,7 @@ function lightTheme(sinal){
         themeButton.style.marginRight = "auto";
         themeButton.style.backgroundImage = "url('../assets/svg/sun-icon.svg')";
         if(sinal){
-            themeButton.style.backgroundImage = "url('../assets/svg/sun-icon.svg')";
+            themeButton.style.backgroundImage = "url('./assets/svg/sun-icon.svg')";
         }
     }
 

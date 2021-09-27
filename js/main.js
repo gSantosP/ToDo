@@ -63,7 +63,7 @@ function verificaAutenticacao() {
             localStorage.setItem("userName", user.displayName); //Exibir o nome do usuário na página
         } else {
             alert("Você saiu da sua conta ou não está logado, estamos te redirecionando para página de login...");
-            window.location.pathname = "./index.html";
+            window.location.pathname = "/ToDo/";
         }
     })
 }
@@ -195,7 +195,9 @@ function renderTaskCards() {
             document.querySelectorAll(".lixeira").forEach(lixeira => {
                 lixeira.onclick = () => {
                     const task = lixeira.parentNode;
-                    deleteTask(task.id);
+                    if (confirm("Você deseja realmente apagar essa tarefa? Essa ação não pode ser desfeita. Clique em OK para confirmar.")){
+                        deleteTask(task.id);
+                    }
                 }
             })
 
@@ -203,7 +205,7 @@ function renderTaskCards() {
             const botaoLimpar = document.getElementById("clear-button");
             botaoLimpar.addEventListener('click', e => {
                 e.preventDefault();
-                if (confirm("Você tem certeza que deseja excluir todas as tarefa? Essa ação não poderá ser desfeita. Clique em OK para confirmar.")){
+                if (confirm("Você tem certeza que deseja excluir todas as tarefas? Essa ação não poderá ser desfeita. Clique em OK para confirmar.")){
                     clearTasks();
                 }
             })
@@ -214,30 +216,33 @@ function renderTaskCards() {
                 checkbox.onclick = () => {
                     const database = getDatabase();
                     let task = checkbox.parentNode;
-                    const taskStatus = checkbox.checked;
 
                     const uid = localStorage.getItem("userId");
                     const taskToUpdate = ref(database, uid + '/' + task.id);
                     let valores = [];
 
-                    //Pega os valores da tarefa no banco
+                    //Get - Pega os valores da tarefa no banco
                     get(taskToUpdate).then(snapshot => {
                         valores.push(snapshot.val());
-                        //Realiza o update do status no banco
+                        //Realiza o update do status no banco usando a função set
                         if (valores[0].checked) {
                             set(taskToUpdate, {
                                 dataInicio: valores[0].dataInicio,
                                 dataFinal: valores[0].dataFinal,
                                 descricao: valores[0].descricao,
                                 checked: false
-                            }).then(() => console.log("Atualizou!")).catch(error => console.log("Aconteceu um erro", error));
+                            }).then(() => {
+                                console.log("Atualizou!");
+                            }).catch(error => console.log("Aconteceu um erro", error));
                         } else {
                             set(taskToUpdate, {
                                 dataInicio: valores[0].dataInicio,
                                 dataFinal: valores[0].dataFinal,
                                 descricao: valores[0].descricao,
                                 checked: true
-                            }).then(() => console.log("Atualizou!")).catch(error => console.log("Aconteceu um erro", error))
+                            }).then(() => {
+                                console.log("Atualizou!");
+                            }).catch(error => console.log("Aconteceu um erro", error))
                         }
                     }).catch(error => console.log("Um erro aconteceu ao ler/gravar os dados. Erro:", error));
                 }
@@ -258,7 +263,7 @@ themeButton.onclick = () => {
 }
 
 const paragrafoNomeUsuario = document.getElementById("nome-usuario");
-let welcomeUser;
+let welcomeUser = localStorage.getItem("userName");
 if (localStorage.getItem("userName") === null || localStorage.getItem("userName") === undefined){
     welcomeUser = "Olá!";
 } else {
@@ -269,7 +274,7 @@ paragrafoNomeUsuario.append(document.createTextNode(welcomeUser));
 const exitLink = document.getElementById("exit");
 exitLink.onclick = () => {
     signOut(auth).then(() => {
-        window.location.href = "./index.html";
+        window.location.href = "/ToDo/";
       }).catch((error) => {
         alert("Xiii, não foi possível sair da conta. Tente novamente.")
       });
@@ -295,6 +300,5 @@ botaoSalvar.addEventListener('click', e => {
         descricao.style.border = "2px solid red"
     } else {
         saveTask();
-        /* renderTaskCards(); */
     }
 })

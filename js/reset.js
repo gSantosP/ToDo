@@ -17,7 +17,7 @@ function autentication() {
         .then(() => {
             /* Email de recuperação enviado para o usuário */
             alert("Email enviado com sucesso, verifique sua caixa de entrada.")
-            window.location.pathname = "./index.html";
+            window.location.pathname = "/ToDo/";
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;

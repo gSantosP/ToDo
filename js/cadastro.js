@@ -23,6 +23,7 @@ function validaEmail(email) {
         return true;
 }
 
+// Salva o novo usuário no banco
 function saveUser() {
     const auth = getAuth();
     const name = document.getElementById('name').value;
@@ -39,7 +40,7 @@ function saveUser() {
     else if (password != repass) {
         alert("As senhas inseridas não correspondem!");
     } else {
-        //Passando pela validação, a função do Firebase Auth é acionada
+        //Passando pela validação, a função do Firebase Auth é acionada pra salvar o usuário
         createUserWithEmailAndPassword(auth, email, password )
             .then((userCredential) => {
                 //Após o cadastro, o usuário é redirecionado para a página de tarefas
@@ -52,7 +53,7 @@ function saveUser() {
                 }).catch((error) => {
                     console.log("Ocorreu um erro", error);
                 })
-                window.location.pathname = "/todo.html"
+                window.location.pathname = "/ToDo/"
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;

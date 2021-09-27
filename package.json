@@ -1,8 +1,8 @@
 {
   "name": "app-todo-with-firebase",
   "version": "1.0.0",
-  "description": "Web application developed by students participating in the Certified Tech Developer",
-  "main": "app.js",
+  "description": "Web application developed by students participating of the Certified Tech Developer",
+  "main": "main.js",
   "dependencies": {
     "firebase": "^9.1.0",
     "firebaseui": "^5.0.0"

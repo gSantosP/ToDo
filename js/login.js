@@ -1,5 +1,12 @@
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
+window.onload = () => {
+    renderLoadAnimation(true);
+    setTheme(true);
+    
+    document.getElementById('email').focus();
+}
+
 function autentication() {
     const auth = getAuth();
     const email = document.getElementById('email').value;
@@ -11,7 +18,7 @@ function autentication() {
             /* Login realizado com sucesso, redireciona pra página de Tarefas */
             const user = userCredential.user;
             localStorage.setItem("user",user);
-            window.location.pathname = "/html/todo.html";
+            window.location.pathname = "/ToDo/html/todo.html";
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
