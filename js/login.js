@@ -19,13 +19,32 @@ function autentication() {
         return e.userName === userName && e.pass === pass;
     })
     
-    if(isValid == false || isValid == undefined || isValid == null || isValid == ''){
-        alert("Usuario inválido!");
-    }else{
+    if(userName.length < 5){
+        document.getElementById('User').style.border = "1px solid red";
+        alert("O nome de usuário deve conter mais de 5 caracters");
+    }
+    else if(pass.length < 8){
+        document.getElementById('Pass').style.border = "1px solid red"
+        alert("O campo senha deve conter mais de 8 caracters!")
+    }
+    else if(isValid == false || isValid == undefined || isValid == null || isValid == ''){
+        alert("Nome de usuário ou senha incorreto!");
+    }
+    else{
         window.sessionStorage.setItem("user", userName);
         window.location.pathname = "/ToDo/html/todo.html";
     }
 }
+
+const userNameInput = document.getElementById('User');
+userNameInput.addEventListener('keypress', ()=>{
+    userNameInput.style.border = "1px solid #73b3fd"
+})
+
+const passInput = document.getElementById('Pass');
+passInput.addEventListener('keypress', ()=>{
+    passInput.style.border = "1px solid #73b3fd"
+})
 
 const submitButton = document.getElementById("submit-button");
 submitButton.onclick = ev => {
