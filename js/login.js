@@ -11,7 +11,7 @@ function autentication() {
             /* Login realizado com sucesso, redireciona pra página de Tarefas */
             const user = userCredential.user;
             localStorage.setItem("user",user);
-            window.location.pathname = "./html/todo.html";
+            window.location.pathname = "/html/todo.html";
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;

@@ -63,7 +63,7 @@ function verificaAutenticacao() {
             localStorage.setItem("userName", user.displayName); //Exibir o nome do usuário na página
         } else {
             alert("Você saiu da sua conta ou não está logado, estamos te redirecionando para página de login...");
-            window.location.pathname = "../index.html";
+            window.location.pathname = "./index.html";
         }
     })
 }
@@ -269,7 +269,7 @@ paragrafoNomeUsuario.append(document.createTextNode(welcomeUser));
 const exitLink = document.getElementById("exit");
 exitLink.onclick = () => {
     signOut(auth).then(() => {
-        window.location.href = "../index.html";
+        window.location.href = "./index.html";
       }).catch((error) => {
         alert("Xiii, não foi possível sair da conta. Tente novamente.")
       });

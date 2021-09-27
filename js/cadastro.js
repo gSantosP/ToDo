@@ -52,7 +52,7 @@ function saveUser() {
                 }).catch((error) => {
                     console.log("Ocorreu um erro", error);
                 })
-                window.location.pathname = "./html/todo.html";
+                window.location.pathname = "/todo.html"
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;

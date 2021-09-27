@@ -4,14 +4,6 @@ window.onload = () => {
     setTheme();
 }
 
-/* function checkUser(){
-    const user = window.sessionStorage.getItem("user");
-
-    if(user == null || user == undefined || user == ""){
-        window.location.pathname = "/ToDo/"
-    }
-} */
-
 
 const themeButton = document.getElementById("theme-button");
  themeButton.onclick = () => {

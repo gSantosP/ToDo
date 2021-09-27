@@ -52,7 +52,7 @@ function darkTheme(sinal){
         themeButton.style.marginLeft = "auto";
         themeButton.style.backgroundImage = "url('../assets/svg/moon-icon.svg')";
         if(sinal){
-            themeButton.style.backgroundImage = "url('../assets/svg/moon-icon.svg')";
+            themeButton.style.backgroundImage = "url('./assets/svg/moon-icon.svg')";
         }
     }
 
