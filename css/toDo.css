@@ -101,6 +101,10 @@ form{
     
 }
 
+.disable{
+    opacity: .6;
+}
+
 .input-container{
     display: flex;
     flex-direction: column; 
@@ -154,7 +158,6 @@ textarea:focus{
     width: auto;
     padding: 0 18px;
     align-self: flex-end;
-    margin-bottom: 32px;
     color: #db1414e6;
 }
 
@@ -181,9 +184,9 @@ button:active{
     display: flex;
     align-items: flex-start;
     flex-direction: row;
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #0003;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #0006;
 }
 
 .task-card > input[type = "checkbox"]{
@@ -203,10 +206,11 @@ button:active{
 }
 
 .task-description{
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
 .data{
+    opacity: .7;
     font-size: .8em;
 }
 
