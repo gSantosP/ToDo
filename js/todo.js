@@ -123,8 +123,11 @@ function renderTaskCards(){
 
         // Limpa a lista de tarefas do usuário logado
         clearButton.onclick = () => {
-            window.localStorage.removeItem(`tasks-${user}`);
-            renderTaskCards();
+            const verify = confirm("Tem certeza que deseja limpar as tarefas?");
+            if(verify){
+                window.localStorage.removeItem(`tasks-${user}`);
+                renderTaskCards();
+            }
         };
 
 
@@ -251,6 +254,7 @@ botaoSalvar.addEventListener('click', e => {
     } else{
         saveTask();
         renderTaskCards();
+        document.getElementById("descricao").value = "";
     }
 
 })
