@@ -24,7 +24,7 @@ function renderLoadAnimation(sinal){
     load.appendChild(img)
 
     // darck
-    if(window.sessionStorage.getItem("theme") == "dark"){
+    if(window.localStorage.getItem("theme") == "dark"){
         load.style.backgroundColor = "#333";
         img.style.backgroundImage = `url("../assets/img/ouroboros-white.png")`;
         if(sinal){
