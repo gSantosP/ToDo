@@ -93,8 +93,6 @@ function saveTask(){
     tasks.unshift(task);
     window.localStorage.setItem(`tasks-${user}`, JSON.stringify(tasks));
 
-    alert("Nova tarefa criada com sucesso!");
-
 }
 
 
