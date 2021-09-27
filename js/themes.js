@@ -1,17 +1,17 @@
 function setTheme(s){
-    if(window.localStorage.getItem('theme') == 'dark'){
+    if(window.sessionStorage.getItem('theme') == 'dark'){
         darkTheme(s);
-    } else if(window.localStorage.getItem('theme') == 'light'){
+    } else if(window.sessionStorage.getItem('theme') == 'light'){
         lightTheme(s);
     } else {
-        window.localStorage.setItem('theme', 'light');
+        window.sessionStorage.setItem('theme', 'light');
         setTheme(s);
     }
 }
 
 function darkTheme(sinal){
 
-    window.localStorage.setItem('theme', 'dark')
+    window.sessionStorage.setItem('theme', 'dark')
 
     document.body.style.backgroundColor = "#353535";
     document.body.style.color = "#FFF"
@@ -52,7 +52,7 @@ function darkTheme(sinal){
         themeButton.style.marginLeft = "auto";
         themeButton.style.backgroundImage = "url('../assets/svg/moon-icon.svg')";
         if(sinal){
-            themeButton.style.backgroundImage = "url('./assets/svg/moon-icon.svg')";
+            themeButton.style.backgroundImage = "url('../assets/svg/moon-icon.svg')";
         }
     }
 
@@ -60,7 +60,7 @@ function darkTheme(sinal){
 
 function lightTheme(sinal){
 
-    window.localStorage.setItem('theme', 'light')
+    window.sessionStorage.setItem('theme', 'light')
 
     document.body.style.backgroundColor = "#EEE";
     document.body.style.color = "#000"
@@ -102,7 +102,7 @@ function lightTheme(sinal){
         themeButton.style.marginRight = "auto";
         themeButton.style.backgroundImage = "url('../assets/svg/sun-icon.svg')";
         if(sinal){
-            themeButton.style.backgroundImage = "url('./assets/svg/sun-icon.svg')";
+            themeButton.style.backgroundImage = "url('../assets/svg/sun-icon.svg')";
         }
     }
 

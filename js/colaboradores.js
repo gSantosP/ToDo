@@ -1,24 +1,24 @@
 window.onload = () => {
     renderLoadAnimation();
-    checkUser();
+    /* checkUser(); */
     setTheme();
 }
 
-function checkUser(){
+/* function checkUser(){
     const user = window.sessionStorage.getItem("user");
 
     if(user == null || user == undefined || user == ""){
         window.location.pathname = "/ToDo/"
     }
-}
+} */
 
 
 const themeButton = document.getElementById("theme-button");
  themeButton.onclick = () => {
-     if(window.localStorage.getItem('theme') == 'dark'){
-        window.localStorage.setItem('theme', 'light')
-     } else if(window.localStorage.getItem('theme') == 'light'){
-        window.localStorage.setItem('theme', 'dark')
+     if(window.sessionStorage.getItem('theme') == 'dark'){
+        window.sessionStorage.setItem('theme', 'light')
+     } else if(window.sessionStorage.getItem('theme') == 'light'){
+        window.sessionStorage.setItem('theme', 'dark')
     }
 
     setTheme();
