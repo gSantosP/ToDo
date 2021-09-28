@@ -1,5 +1,5 @@
 # Projeto ToDo - Checkpoint II - Front End II
-Olá, este web app ToDo (lista de coisas a fazer) tem como objetivo servir como segundo instrumento avaliativo da disciplina de Front End II e está sendo desenvolvido pelos integrandes da mesa ##:
+Olá, este web app ToDo (lista de coisas a fazer) tem como objetivo servir como segundo instrumento avaliativo da disciplina de Front End II e está sendo desenvolvido pelos integrandes da mesa 02:
 
  - [Aloisio Carvalho](https://github.com/aloisiot)
  - [Gabriel Santos](https://github.com/gSantosP)
@@ -9,11 +9,24 @@ Olá, este web app ToDo (lista de coisas a fazer) tem como objetivo servir como 
  - [Samuel Xavier](https://github.com/SamuelFXavier)
  - [William Rodrigues](https://github.com/warwilliam)
 
+## GitHub Pages
+[Usando session storage](https://gsantosp.github.io/ToDo/)
+
+[Usando Firebase pra persistência de dados](https://ronilsonalves.github.io/ToDo/)
+
 ## O projeto
 A equipe optou por não seguir o esqueleto do HTML & CSS disponiblizado em aula pelo professor, fora criado um wirefame e trabalhamos no projeto do zero, criando nossa própria estrutura HTML e aplicando nossa própria estilização.
 
 ## Screenshot
-[.](#link-das-images-vai-aqui)
+Versão Session Storage (Tema Light):
+[.](/assets/screen/localAppToDoLight.png)
+Versão Session Storage (Tema Dark):
+[.](/assets/screen/localAppToDoDark.png)
+
+Versão com Database (Tema Light):
+[.](/assets/screen/withDatabaseAppToDoLight.png)
+Versão com Database (Tema Dark):
+[.](/assets/screen/withDatabaseAppToDoDark.png)
 
 ## Instruções e requisitos do projeto
 	
