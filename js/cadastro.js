@@ -1,101 +1,107 @@
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+
 window.onload = () => {
     renderLoadAnimation();
     setTheme()
 
-    document.getElementById("User").focus();
+    document.getElementById("email").focus();
 }
 
 // Valida a senha inserida
 function validaPass(pass) {
-    if(pass == null || pass.length < 8)
+    if (pass == null || pass.length < 8)
         return false;
     else
         return true;
 }
 
-// Valida o nome de usuário inserido
-function validaUserName(userName) {
-    if(userName.length < 5)
+// Valida o email usuário inserido
+function validaEmail(email) {
+    if (email.length < 20)
         return false;
     else
         return true;
 }
 
-// Contrutor para novos usuários
-function NewUser(userName,  pass){
-    this.userName = userName;
-    this.pass = pass;
-}
-
-// Salva o novo usuário no localstorage
+// Salva o novo usuário no banco
 function saveUser() {
+    const auth = getAuth();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const repass = document.getElementById('rep-pass').value;
 
-    let users = window.localStorage.getItem("users");
-    
-    if(users == null || users == undefined || users == ''){
-        users = JSON.stringify([]);
-        window.localStorage.setItem("users", users);
+    if (!validaEmail(email)) {
+        alert("O endereço de email é inválido!");
     }
-    
-    users = JSON.parse(users);
-    const userName = document.getElementById("User").value;
-    const pass = document.getElementById("Pass").value;
-    const confimPass = document.getElementById("rep-pass").value;
-    
-    const newUser = new NewUser(userName, pass);
-
-
-    let notDisponible = false;
-    users.forEach(u => {
-        if(u.userName === userName) notDisponible = true;
-    })
-    
-    if(notDisponible){
-        alert("Este nome de usuário não está disponivel!")
-    }else if(!validaUserName(newUser.userName)){
-        alert("O nome de usuário deve conter, no mínimo, 5 caracter!");
-        document.getElementById("User").style.border = "1px solid #db1414e6";
+    else if (!validaPass(password)) {
+        alert("A senha deve conter, no mínimo, 8 caracteres!");
     }
-    else if(!validaPass(newUser.pass)){
-        alert("A senha deve conter, no mínimo, 8 caracters!");
-        document.getElementById("Pass").style.border = "1px solid #db1414e6";
-    }
-    else if(newUser.pass != confimPass){
+    else if (password != repass) {
         alert("As senhas inseridas não correspondem!");
-        document.getElementById("rep-pass").style.border = "1px solid #db1414e6";
-    }
-    else{
-        
-        users.push(newUser);
-        window.localStorage.setItem("users", JSON.stringify(users));
+    } else {
+        //Passando pela validação, a função do Firebase Auth é acionada pra salvar o usuário
+        createUserWithEmailAndPassword(auth, email, password )
+            .then((userCredential) => {
+                //Após o cadastro, o usuário é redirecionado para a página de tarefas
+                const user = userCredential.user;
+                //Seta o nome do usuário
+                updateProfile(auth.currentUser, {
+                    displayName: `${name}`,
+                }).then(() => {
+                    console.log(name);
+                }).catch((error) => {
+                    console.log("Ocorreu um erro", error);
+                })
+                window.location.pathname = "/ToDo/"
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log("Erro no cadastro: ", errorCode, "Msg.:", errorMessage)
+                //Caso o email já esteja sendo utilizado orientar usuário a fazer login ou recuperar a senha
+                let form = document.querySelector('form');
+                let alertDiv = document.createElement('div');
+                alertDiv.id = "divAlerta";
+                let contentAlert = document.createElement('span');
+                contentAlert.id = "removeAfter2s";
+                let textAlert = document.createTextNode("Email já utilizado, por favor tente fazer login ou recuperar sua senha!");
+                contentAlert.appendChild(textAlert);
+                alertDiv.appendChild(contentAlert);
 
-        alert("Usuário criado com sucesso!");
+                form.after(alertDiv);
 
-        window.location.pathname = "/ToDo/";
+            });
+
     }
-    
+    // Remove o alert de usuário já cadastrado
+    if (document.getElementById("divAlerta") != null || document.getElementById("divAlerta") != undefined) {
+        setTimeout(function () {
+            var msg = document.getElementById("divAlerta");
+            msg.parentNode.removeChild(msg);
+        }, 1);
+    }
+
 }
 
-const submitButton = document.getElementById("submit-button");
-submitButton.addEventListener('click', e => {
-    e.preventDefault();
+const submitButton = document.getElementById('submit-button');
+submitButton.onclick = ev => {
+    ev.preventDefault();
 
     saveUser();
-
-})
+}
 
 const themeButton = document.getElementById("theme-button");
- themeButton.onclick = () => {
-     if(window.localStorage.getItem('theme') == 'dark'){
-        window.localStorage.setItem('theme', 'light')
-     } else if(window.localStorage.getItem('theme') == 'light'){
-        window.localStorage.setItem('theme', 'dark')
+themeButton.onclick = () => {
+    if (window.sessionStorage.getItem('theme') == 'dark') {
+        window.sessionStorage.setItem('theme', 'light')
+    } else if (window.sessionStorage.getItem('theme') == 'light') {
+        window.sessionStorage.setItem('theme', 'dark')
     }
 
     setTheme();
- }
+}
 
- const inputs = document.querySelectorAll("input");
-inputs.forEach( input => {
+const inputs = document.querySelectorAll("input");
+inputs.forEach(input => {
     input.addEventListener("keydown", ev => input.style.border = "1px solid #73B3FD90")
 })

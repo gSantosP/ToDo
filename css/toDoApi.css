@@ -9,11 +9,6 @@
     outline: none;
 }
 
-#dragao-spin{
-    background-image: url("../assets/img/ouroboros.png");
-}
-
-
 html, body, main{
     height: 100%;
     width: 100%;

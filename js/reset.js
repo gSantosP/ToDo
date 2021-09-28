@@ -1,28 +1,27 @@
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
 window.onload = () => {
-    renderLoadAnimation(true);
-    setTheme(true);
-    
-    document.getElementById('email').focus();
+    renderLoadAnimation();
+    setTheme()
+
+    document.getElementById("email").focus();
 }
+
 
 function autentication() {
     const auth = getAuth();
     const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
 
     /* Usa o serviço de autenticação do Firebase para autenticar o usuário com crendenciais válidas */
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            /* Login realizado com sucesso, redireciona pra página de Tarefas */
-            const user = userCredential.user;
-            localStorage.setItem("user",user);
-            window.location.pathname = "/ToDo/html/todo.html";
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            /* Email de recuperação enviado para o usuário */
+            alert("Email enviado com sucesso, verifique sua caixa de entrada.")
+            window.location.pathname = "/ToDo/";
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log("Erro no login: ",errorCode,"Msg.:",errorMessage);
+            console.log("Erro no reset: ",errorCode,"Msg.:",errorMessage);
             //Caso as credenciais não sejam validas, pede pra criar uma conta ou recuperar a senha
             let form = document.querySelector('form');
             let alertDiv = document.createElement('div');
@@ -32,14 +31,10 @@ function autentication() {
             let textAlert;
             if (error.code === 'auth/user-not-found'){
                 textAlert = document.createTextNode("Usuário não encontrado, que tal criar uma conta?");
-            } else if (error.code === 'auth/wrong-password'){
-                textAlert = document.createTextNode("Senha inválida. Caso não lembre da senha recupere-a clicando em Recuperar Senha.");
             } else if (error.code === 'auth/too-many-requests'){
-                textAlert = document.createTextNode("Muitas tentativas de login. O acesso à sua conta está bloqueado, redefina sua senha ou tente logar novamente mais tarde.");
-            }else if (error.code === 'auth/invalid-email'){
+                textAlert = document.createTextNode("Muitas tentativas. O acesso está bloqueado temporariamente, tente novamente mais tarde.");
+            }else {
                 textAlert = document.createTextNode("Email inválido. Verifique o email digitado e tente novamente.");
-            } else {
-                textAlert = document.createTextNode("Desculpe, estamos passando por instabilidades. Tente novamente mais tarde.");
             }
             
             contentAlert.appendChild(textAlert);

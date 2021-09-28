@@ -38,6 +38,11 @@ header{
 
 a#exit{
     font-weight: 600;
+    width: 25%;
+}
+
+p#nome-usuario {
+    width: 25%;
 }
 
 #theme-button{
@@ -101,10 +106,6 @@ form{
     
 }
 
-.disable{
-    opacity: .6;
-}
-
 .input-container{
     display: flex;
     flex-direction: column; 
@@ -158,6 +159,7 @@ textarea:focus{
     width: auto;
     padding: 0 18px;
     align-self: flex-end;
+    margin-bottom: 32px;
     color: #db1414e6;
 }
 
@@ -184,9 +186,9 @@ button:active{
     display: flex;
     align-items: flex-start;
     flex-direction: row;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid #0006;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #0003;
 }
 
 .task-card > input[type = "checkbox"]{
@@ -206,11 +208,10 @@ button:active{
 }
 
 .task-description{
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .data{
-    opacity: .7;
     font-size: .8em;
 }
 
