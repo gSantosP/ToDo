@@ -50,17 +50,21 @@ function validaDescricao() {
 // Validação do campo data final
 function validaDataFinal() {
     let data = new Date().toLocaleString('pt-br', {timeZone: 'America/Sao_Paulo'}).split(' ')[0].split('/')
-    data = data.reverse()
+    data = data.reverse();
     const dtfinal = document.getElementById('data-final').value.split('-')
     if(dtfinal == undefined || dtfinal == null){
         return false
     }
-
-    for (i=0; i<data.length; i++){
-        if(Number(data[i]) > Number(dtfinal[i]))
-            return false
-    }
+    
+    if(dtfinal[0] > data[0]){
         return true;
+    } else if(dtfinal[0] >= data[0] && dtfinal[1] > data[1]){
+        return true;
+    } else if(dtfinal[0] >= data[0] && dtfinal[1] >= data[1] && dtfinal[2] >= data[2]){
+        return true;
+    }
+
+    return false;
 }
 
 // Classe para instanciação de objetos 'tarefas'
