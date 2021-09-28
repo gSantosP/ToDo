@@ -78,6 +78,13 @@ form{
     box-shadow: 0 0 24px #0003;
 }
 
+form h1{
+    text-align: center;
+}
+#new-account{
+    margin-bottom: 8px;
+}
+
 input{
     border: 1px solid #73B3FD90;
     margin: 18px 0;
