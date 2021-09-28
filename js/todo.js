@@ -149,6 +149,7 @@ function renderTaskCards(){
             descricao.innerHTML = task.descricao;
             if(checkbox.checked){
                 descricao.style.textDecoration = "line-through";
+                descricao.style.opacity = .5;
             }
             
             const dataInicial = document.createElement("div");
