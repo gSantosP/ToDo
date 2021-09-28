@@ -98,7 +98,6 @@ button{
     cursor: pointer;    
 }
 
-#divAlerta:hover,
 input:focus,
 button:hover,
 button:focus{
@@ -114,18 +113,4 @@ a#new-account{
 button:active{
     box-shadow: none ;
     transform: scale(1);
-}
-
-#divAlerta{
-    width: 300px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgb(216, 0, 0);
-    color: #FFF;
-    opacity: 0.7;
-    padding: 32px;
-    border-radius: 12px;
-    box-shadow: 0 0 24px #0003;
-    margin-top: 32px;
 }

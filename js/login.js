@@ -1,65 +1,53 @@
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-
 window.onload = () => {
     renderLoadAnimation(true);
     setTheme(true);
     
-    document.getElementById('email').focus();
+    document.getElementById('User').focus();
 }
+
 
 function autentication() {
-    const auth = getAuth();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
 
-    /* Usa o serviço de autenticação do Firebase para autenticar o usuário com crendenciais válidas */
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            /* Login realizado com sucesso, redireciona pra página de Tarefas */
-            const user = userCredential.user;
-            localStorage.setItem("user",user);
-            window.location.pathname = "/ToDo/html/todo.html";
-        }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log("Erro no login: ",errorCode,"Msg.:",errorMessage);
-            //Caso as credenciais não sejam validas, pede pra criar uma conta ou recuperar a senha
-            let form = document.querySelector('form');
-            let alertDiv = document.createElement('div');
-            alertDiv.id = "divAlerta";
-            let contentAlert = document.createElement('span');
-            contentAlert.id = "removeAfter2s";
-            let textAlert;
-            if (error.code === 'auth/user-not-found'){
-                textAlert = document.createTextNode("Usuário não encontrado, que tal criar uma conta?");
-            } else if (error.code === 'auth/wrong-password'){
-                textAlert = document.createTextNode("Senha inválida. Caso não lembre da senha recupere-a clicando em Recuperar Senha.");
-            } else if (error.code === 'auth/too-many-requests'){
-                textAlert = document.createTextNode("Muitas tentativas de login. O acesso à sua conta está bloqueado, redefina sua senha ou tente logar novamente mais tarde.");
-            }else if (error.code === 'auth/invalid-email'){
-                textAlert = document.createTextNode("Email inválido. Verifique o email digitado e tente novamente.");
-            } else {
-                textAlert = document.createTextNode("Desculpe, estamos passando por instabilidades. Tente novamente mais tarde.");
-            }
-            
-            contentAlert.appendChild(textAlert);
-            alertDiv.appendChild(contentAlert);
+        const userName= document.getElementById('User').value;
+        const pass = document.getElementById('Pass').value;
 
-            form.after(alertDiv);
-        });
-
-        // Remove o alert de erro no login
-        if (document.getElementById("divAlerta") != null || document.getElementById("divAlerta") != undefined) {
-            setTimeout(function(){
-                var msg = document.getElementById("divAlerta");
-                msg.parentNode.removeChild(msg);   
-            }, 1);
-        }
+    let users = window.localStorage.getItem("users");
+    users = JSON.parse(users);
     
+    let isValid = false;
+    isValid = users.find(e => {
+        return e.userName === userName && e.pass === pass;
+    })
+    
+    if(userName.length < 5){
+        document.getElementById('User').style.border = "1px solid red";
+        alert("O nome de usuário deve conter mais de 5 caracters");
+    }
+    else if(pass.length < 8){
+        document.getElementById('Pass').style.border = "1px solid red"
+        alert("O campo senha deve conter mais de 8 caracters!")
+    }
+    else if(isValid == false || isValid == undefined || isValid == null || isValid == ''){
+        alert("Nome de usuário ou senha incorreto!");
+    }
+    else{
+        window.sessionStorage.setItem("user", userName);
+        window.location.pathname = "/ToDo/html/todo.html";
+    }
 }
 
-const submitButton = document.getElementById('submit-button');
-submitButton.onclick = ev =>{
+const userNameInput = document.getElementById('User');
+userNameInput.addEventListener('keypress', ()=>{
+    userNameInput.style.border = "1px solid #73b3fd"
+})
+
+const passInput = document.getElementById('Pass');
+passInput.addEventListener('keypress', ()=>{
+    passInput.style.border = "1px solid #73b3fd"
+})
+
+const submitButton = document.getElementById("submit-button");
+submitButton.onclick = ev => {
     ev.preventDefault();
 
     autentication();
@@ -67,10 +55,10 @@ submitButton.onclick = ev =>{
 
 const themeButton = document.getElementById("theme-button");
  themeButton.onclick = () => {
-     if(window.sessionStorage.getItem('theme') == 'dark'){
-        window.sessionStorage.setItem('theme', 'light')
-     } else if(window.sessionStorage.getItem('theme') == 'light'){
-        window.sessionStorage.setItem('theme', 'dark')
+     if(window.localStorage.getItem('theme') == 'dark'){
+        window.localStorage.setItem('theme', 'light')
+     } else if(window.localStorage.getItem('theme') == 'light'){
+        window.localStorage.setItem('theme', 'dark')
     }
 
     setTheme(true);

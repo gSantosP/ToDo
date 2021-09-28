@@ -1,17 +1,17 @@
 function setTheme(s){
-    if(window.sessionStorage.getItem('theme') == 'dark'){
+    if(window.localStorage.getItem('theme') == 'dark'){
         darkTheme(s);
-    } else if(window.sessionStorage.getItem('theme') == 'light'){
+    } else if(window.localStorage.getItem('theme') == 'light'){
         lightTheme(s);
     } else {
-        window.sessionStorage.setItem('theme', 'light');
+        window.localStorage.setItem('theme', 'light');
         setTheme(s);
     }
 }
 
 function darkTheme(sinal){
 
-    window.sessionStorage.setItem('theme', 'dark')
+    window.localStorage.setItem('theme', 'dark')
 
     document.body.style.backgroundColor = "#353535";
     document.body.style.color = "#FFF"
@@ -60,7 +60,7 @@ function darkTheme(sinal){
 
 function lightTheme(sinal){
 
-    window.sessionStorage.setItem('theme', 'light')
+    window.localStorage.setItem('theme', 'light')
 
     document.body.style.backgroundColor = "#EEE";
     document.body.style.color = "#000"
