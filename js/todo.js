@@ -147,6 +147,9 @@ function renderTaskCards(){
             const descricao = document.createElement("p");
             descricao.classList = "task-description"
             descricao.innerHTML = task.descricao;
+            if(checkbox.checked){
+                descricao.style.textDecoration = "line-through";
+            }
             
             const dataInicial = document.createElement("div");
             dataInicial.innerHTML = `Data inicial: ${task.dataInicio}`;
@@ -208,7 +211,8 @@ function renderTaskCards(){
                 tasks = JSON.parse(tasks);
                 tasks[id].checked = checkbox.checked;
                 tasks = JSON.stringify(tasks);
-                window.localStorage.setItem(`tasks-${user}`, tasks)
+                window.localStorage.setItem(`tasks-${user}`, tasks);
+                renderTaskCards()
             }
         })
         
