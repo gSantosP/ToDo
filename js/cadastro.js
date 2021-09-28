@@ -2,7 +2,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://
 
 window.onload = () => {
     renderLoadAnimation();
-    setTheme()
+    setTheme();
 
     document.getElementById("email").focus();
 }

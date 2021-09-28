@@ -7,10 +7,10 @@ window.onload = startApp;
 
 // Inicia a aplicalção
 function startApp() {
-    verificaAutenticacao();
     renderLoadAnimation();
-    setDatas();
     setTheme();
+    verificaAutenticacao();
+    setDatas();
     renderTaskCards();
 }
 
