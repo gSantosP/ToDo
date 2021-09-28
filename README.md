@@ -19,13 +19,19 @@ A equipe optou por não seguir o esqueleto do HTML & CSS disponiblizado em aula 
 
 ## Screenshot
 Versão Session Storage (Tema Light):
+
 [.](/assets/screen/localAppToDoLight.png)
+
 Versão Session Storage (Tema Dark):
+
 [.](/assets/screen/localAppToDoDark.png)
 
 Versão com Database (Tema Light):
+
 [.](/assets/screen/withDatabaseAppToDoLight.png)
+
 Versão com Database (Tema Dark):
+
 [.](/assets/screen/withDatabaseAppToDoDark.png)
 
 ## Instruções e requisitos do projeto
