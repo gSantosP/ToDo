@@ -14,7 +14,40 @@ body{
 
 html, body {
     background-color: #eee;
+}
 
+header{
+    padding: 0 24px;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 1080px;
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-between;
+}
+
+
+#theme-button{
+    position: relative;
+    width: 56px;
+    height: 30px;
+    border-radius: 24px;
+    background-color: #73b3fd73;
+}
+
+#theme-simbol{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    box-shadow: 0 0 8px #0006;
+    width: 30px;
+    height: 30px;
+    background-color: #EEE;
+    transform: scale(1.2);
+    background-image: url('../assets/svg/sun-icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .caixa-fundadores{
