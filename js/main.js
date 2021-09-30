@@ -9,9 +9,9 @@ window.onload = startApp;
 function startApp() {
     verificaAutenticacao();
     renderLoadAnimation();
-    renderTaskCards();
     setTheme();
     setDatas();
+    /* renderTaskCards(); */ // as task são renderizadas ao chamar a verificação de autenticação.
 }
 
 // Define as regras para as datas
@@ -59,12 +59,13 @@ function validaDataFinal() {
 }
 
 // Funcao pra verificar se o usuário está logado -OK
-async function verificaAutenticacao() {
+function verificaAutenticacao() {
     onAuthStateChanged(auth, (user) => {
         if (user) {
             usuario = user; // salvo pra fazer a escrita na função saveTask().
             localStorage.setItem("userId", user.uid); // salvamos a ID do usuário autenticado no local storage pra renderizarmos suas tarefas
             localStorage.setItem("userName", user.displayName); //Exibir o nome do usuário na página
+            renderTaskCards(); // Isso corrigiu o bug de não mostrar os cards no carregamento inicial da página
         } else {
             alert("Você saiu da sua conta ou não está logado, estamos te redirecionando para página de login...");
             window.location.pathname = "/ToDo/";
@@ -121,7 +122,7 @@ function deleteTask(tarefa) {
 }
 
 // Renderiza os cards com as tarefas
-function renderTaskCards() {
+async function renderTaskCards() {
     const cardsCountainer = document.getElementById("card-container");
     const uid = localStorage.getItem("userId");
     const database = getDatabase();
@@ -164,6 +165,10 @@ function renderTaskCards() {
                 const descricao = document.createElement("p");
                 descricao.classList = "task-description";
                 descricao.innerHTML = task.descricao;
+                if(checkbox.checked){
+                    descricao.style.textDecoration = "line-through";
+                    descricao.style.opacity = .5;
+                }
 
                 const dataInicial = document.createElement("div");
                 dataInicial.id = "dataInicial";
